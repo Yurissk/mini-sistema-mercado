@@ -81,7 +81,7 @@ void cadastrarProduto(struct produto *produtos, int *total)
             limparBufferDeEntrada();
 
             (*total)++; // incrementa o total
-            printf("\n✅ Produto cadastrado com sucesso!\n");
+            printf("\n Produto cadastrado com sucesso!\n");
             break;
 
         case 2:
