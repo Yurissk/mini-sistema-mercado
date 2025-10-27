@@ -94,12 +94,23 @@ void cadastrarProduto(struct produto *produtos, int *total)
     } while (opcao != 2);
 }
 
+void listarProdutos(struct produto *produtos, int *total){
+    for (int i = 0; i < *total; i++)
+    {
+        printf("Nome: %s\n", produtos[i].nome);
+        printf("Preço: %lf\n", produtos[i].preco);
+        printf("Referencia: %d\n", produtos[i].ref);
+        printf("Estoque: %d\n", produtos[i].quantidade);
+    }
+}
+
 int main()
 {
     setlocale(LC_ALL, "Portuguese");
 
     struct produto produtos[MAX_PRODUTOS];
     int totalProdutos = 0;
+    int total = 0;
     int opcao;
 
     do
@@ -124,17 +135,8 @@ int main()
 
         case 2:
             printf("\n=== LISTA DE PRODUTOS ===\n");
-            for (int i = 0; i < totalProdutos; i++)
-            {
-                printf("%d. %s - R$ %.2lf - Ref: %d - Qtde: %d\n",
-                       i + 1,
-                       produtos[i].nome,
-                       produtos[i].preco,
-                       produtos[i].ref,
-                       produtos[i].quantidade);
-            }
-            if (totalProdutos == 0)
-                printf("Nenhum produto cadastrado ainda.\n");
+
+            listarProdutos(produtos, &totalProdutos);
             break;
 
         case 3: {
